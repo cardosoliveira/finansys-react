@@ -2,15 +2,29 @@ import React, { useState } from 'react';
 
 import Card from './components/card'
 import FormGroup from './components/form-group'
-import { withRouter} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
+import axios from 'axios';
 
 
 const Login = () => {
+    const history = useHistory();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const handleCadastrar = () => {
-        this.props.history.push('/cadastro')
+        history.push('/cadastro')
+    }
+
+    const Logar = () => {
+        axios.post('http://localhost:3000/login', {
+            email: email,
+            password: password
+        })
+        .then((response) => {
+            console.log(response)
+        }).catch((error) => {
+            console.log(error.response)
+        })
     }
 
         return (
@@ -48,8 +62,8 @@ const Login = () => {
                                                 </FormGroup>   
 
                                                 <div style={{float: "right", marginTop: "20px"}}>
-                                                    <button onClick={() => handleCadastrar()} className="btn btn-success">Entrar</button>
-                                                    <button style={{marginLeft: "10px"}} className='btn btn-danger'>Cadastrar</button>
+                                                    <button onClick={Logar} className="btn btn-success">Entrar</button>
+                                                    <button onClick={handleCadastrar} style={{marginLeft: "10px"}} className='btn btn-danger'>Cadastrar</button>
                                                 </div>
                                                 
 
@@ -63,4 +77,4 @@ const Login = () => {
                 </div>
         )
     }
-export default withRouter( Login ) 
+export default Login

@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import Card from "./components/card";
 import FormGroup from "./components/form-group";
+import { useHistory } from "react-router-dom";
 
 const CadastroUsuario = () => {
-
+    const history = useHistory();
     const [fullname, setFullname] = useState('')
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
-    const Cadastrar = () => {
-        
+    const handleCancelar = () => {
+        history.push('/login')
     }
     
     return (
@@ -76,8 +77,8 @@ const CadastroUsuario = () => {
                                 />
                             </FormGroup>
 
-                            <button onClick={() => Cadastrar()} style={{margin: "10px"}} className="btn btn-success">Salvar</button>
-                            <button className='btn btn-danger'>Cancelar</button>
+                            <button style={{margin: "10px"}} className="btn btn-success">Salvar</button>
+                            <button onClick={handleCancelar} className='btn btn-danger'>Cancelar</button>
 
                         </div>
                     </div>
