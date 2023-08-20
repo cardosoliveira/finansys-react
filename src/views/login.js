@@ -2,19 +2,18 @@ import React, { useState } from 'react';
 
 import Card from './components/card'
 import FormGroup from './components/form-group'
+import { withRouter} from 'react-router-dom';
 
 
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const Entrar = () => {
-  
+    const handleCadastrar = () => {
+        this.props.history.push('/cadastro')
     }
 
         return (
-            <div clasName="container"> 
-
                 <div className="row">
                     <div className='col-md-6' style={{position : "relative", left: "300px"}}>
                         <div className='bs-docs-section'>
@@ -25,7 +24,8 @@ const Login = () => {
                                             <fieldset>
 
                                                 <FormGroup label="Email: *" htmlFor="exampleEmail">
-                                                    <input 
+                                                    <input
+                                                        style={{marginTop:"5px"}}
                                                         type="email" 
                                                         className="form-control" 
                                                         id="exampleEmail" 
@@ -36,7 +36,8 @@ const Login = () => {
                                                 </FormGroup>
 
                                                 <FormGroup label="Senha: *" htmlFor="examplePassword">
-                                                    <input 
+                                                    <input
+                                                        style={{marginTop:"5px"}}
                                                         type="password" 
                                                         className="form-control" 
                                                         id="examplePassword" 
@@ -46,8 +47,11 @@ const Login = () => {
                                                     />
                                                 </FormGroup>   
 
-                                                <button onClick={() => Entrar()} className="btn btn-success">Entrar</button>
-                                                <button className='btn btn-danger'>Cadastrar</button>
+                                                <div style={{float: "right", marginTop: "20px"}}>
+                                                    <button onClick={() => handleCadastrar()} className="btn btn-success">Entrar</button>
+                                                    <button style={{marginLeft: "10px"}} className='btn btn-danger'>Cadastrar</button>
+                                                </div>
+                                                
 
                                             </fieldset>
                                         </div>
@@ -57,8 +61,6 @@ const Login = () => {
                         </div>
                     </div>
                 </div>
-            
-            </div>
         )
     }
-export default Login
+export default withRouter( Login ) 
