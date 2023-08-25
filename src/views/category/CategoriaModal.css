@@ -1,0 +1,17 @@
+.modal.show {
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+  }
+  
+  /* Estilos personalizados para a modal */
+  .custom-modal {
+    background-color: #f2f2f2; /* Cor de fundo personalizada */
+    border: 1px solid #ccc;
+  }
+  
+  .custom-modal .modal-title {
+    color: #333; /* Cor do título */
+  }
+  
+  .custom-modal .close {
+    color: #333; /* Cor do ícone de fechar */
+  }

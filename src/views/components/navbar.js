@@ -21,10 +21,11 @@ function Navbar (){
                 <div className="collapse navbar-collapse" id="navbarResponsive">
                     <ul className="navbar-nav">
                         
-                        <NavbarItem href="#/" label="Home" />
-                        <NavbarItem href="#/cadastro" label="Usuários" />
+                        <NavbarItem href="/home" label="Home" />
+                        {/* <NavbarItem href="/cadastro" label="Usuários" /> */}
                         {/* <NavbarItem href="#/lançamento" label="Lançamentos" /> */}
-                        <NavbarItem href="#/login" label="Login" />
+                        {/* <NavbarItem href="/login" label="Login" /> */}
+                        <NavbarItem href="/categoria" label="Categorias" />
 
                     </ul>
                 </div>
