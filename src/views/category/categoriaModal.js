@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './CategoriaModal.css';
-
 import axios from 'axios';
+import toastr from 'toastr';
 
 const CategoriaModal = ({ modalOpen, closeModal, categoryId }) => {
     const [categoryName, setCategoryName] = useState('');
@@ -9,42 +9,63 @@ const CategoriaModal = ({ modalOpen, closeModal, categoryId }) => {
     const userId = localStorage.getItem('userId');
 
     useEffect(() => {
+      if (categoryId != 0){
 
-        if (categoryId != null) {
-            axios.get(`http://localhost:3000/categorias/${categoryId}/${userId}`)
-            .then((response) => {
-                setCategoryName(response.data.nome)
-                setCategoryDescription(response.data.descricao)
-            }).catch((error) => {
-                console.log(error.response)
-            })
-        }
-    })
+          getCategory()
+      }     
+    }, [categoryId])
+
+    const getCategory = () => {
+        const url = `http://localhost:8080/v1/category/${categoryId}?userId=${userId}`;
+        axios.get(url)
+        .then((response) => {
+            setCategoryName(response.data.name)
+            setCategoryDescription(response.data.description)
+        }).catch((error) => {
+            console.log(error.response)
+        })
+    }
 
     const SaveCategory = () => {
-        if (categoryId == 0) {
+
+        if(categoryName == ""){
+            toastr.warning('Preencha o nome da categoria.')
+
+            return;
+        }
+      
+        if (categoryId == 0) {      
             axios.post('http://localhost:8080/v1/category', {
-                nome: categoryName,
-                descricao: categoryDescription
+                name: categoryName,
+                description: categoryDescription,
+                userId
             })
             .then((response) => {
-                console.log(response)
-                closeModal()
+              handleCloaseModal()
+              toastr.success('Categoria cadastrada com sucesso!')
             }).catch((error) => {
                 console.log(error.response)
             })
         } else {
-            axios.put(`http://localhost:3000/categorias/${categoryId}/${userId}`, {
-                nome: categoryName,
-                descricao: categoryDescription
+            const url = `http://localhost:8080/v1/category/${categoryId}`;
+            axios.put(url , {
+                name: categoryName,
+                description: categoryDescription,
+                userId
             })
             .then((response) => {
-                console.log(response)
-                closeModal()
+                handleCloaseModal()
+                toastr.success('Categoria atualizada com sucesso!')
             }).catch((error) => {
                 console.log(error.response)
             })
         }
+    }
+
+    const handleCloaseModal = () => {
+        setCategoryDescription('')
+        setCategoryName('')
+        closeModal()
     }
 
 
@@ -54,7 +75,7 @@ const CategoriaModal = ({ modalOpen, closeModal, categoryId }) => {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" style={{ color: '#333', fontWeight: 'bold' }}>Categoria</h5>
-            <button type="button" className="close" onClick={closeModal}>
+            <button type="button" className="close" onClick={handleCloaseModal}>
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -87,7 +108,7 @@ const CategoriaModal = ({ modalOpen, closeModal, categoryId }) => {
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-primary" onClick={SaveCategory}>Salvar</button>
-            <button type="button" className="btn btn-secondary" onClick={closeModal}>Fechar</button>
+            <button type="button" className="btn btn-secondary" onClick={handleCloaseModal}>Fechar</button>
           </div>
         </div>
       </div>

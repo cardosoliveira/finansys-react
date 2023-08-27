@@ -4,6 +4,7 @@ import Card from '../components/card'
 import ListarCategoria from './categoryTable';
 import CategoriaModal from './categoriaModal';
 import axios from 'axios';
+import toastr from 'toastr';
 
 
 const Categoria = () => {
@@ -17,8 +18,7 @@ const Categoria = () => {
     }, [])
 
    const ListCategoryFromApi = () => {
-
-       const url = `http://localhost:8080/v1/category?userId=${1}`;
+       const url = `http://localhost:8080/v1/category?userId=${userId}`;
        axios.get(url)
        .then((response) => {
             setCategory(response.data)
@@ -27,50 +27,53 @@ const Categoria = () => {
        })
    }
 
+const excluirCategoria = (id) => {
+    const url = `http://localhost:8080/v1/category/${id}?userId=${userId}`;
+    axios.delete(url)
+    .then((response) => {
+        ListCategoryFromApi()
+        toastr.success('Categoria excluída com sucesso!')
+    }).catch((error) => {
+        console.log(error.response)
+    })  
+}
+
 const openModal = () => {
     setModalOpen(true);
 }
 
 const closeModal = () => {
-    setCategory(0)
+    setCategoryId(0)
     setModalOpen(false);
+    ListCategoryFromApi();
 }
 
-const excluirCategoria = ( id ) => {
-    console.log(id)
-}
 
 const editarCategoria = ( id ) => {
     setCategoryId(id);
     setModalOpen(true);
-    ListCategoryFromApi();
 }
 
-const categorias = [
-    {
-        id: 1,
-        nome: 'Alimentação',
-        descricao: 'Alimentação'
-    }
-];
 
     return (
         <>
-            <div className="row justify-content-end" style={{ marginBottom: "15px" }}>
+            <div style={{ display: "flex" }}>
+                  
+                <div>Quantidade de categorias: {category.length}</div>
 
-                <CategoriaModal modalOpen={modalOpen} closeModal={closeModal} categoryId={categoryId} />
-
-                <div className="col-auto">
+                <div style={{ marginLeft: "auto", marginBottom: "10px" }} className="col-auto">
                     <button type='button' className='btn btn-primary' onClick={openModal}>Nova Categoria</button>
                 </div>
             </div>
+
+            <CategoriaModal modalOpen={modalOpen} closeModal={closeModal} categoryId={categoryId} />
 
             <Card title="Categorias">
                 <div className='row'>
                     <div className='col-md-12'>
                         <div className='bs-component'>
 
-                            <ListarCategoria categorias={categorias} editarCategoria={editarCategoria} excluirCategoria={excluirCategoria} />
+                            <ListarCategoria categorias={category} editarCategoria={editarCategoria} excluirCategoria={excluirCategoria} />
 
                         </div>
                     </div>

@@ -4,6 +4,7 @@ import Card from './components/card'
 import FormGroup from './components/form-group'
 import { useHistory} from 'react-router-dom';
 import axios from 'axios';
+import { useEffect } from 'react';
 
 
 const Login = () => {
@@ -11,17 +12,22 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    useEffect(() => {
+        localStorage.removeItem('userId')   
+    }, [])
+
     const handleCadastrar = () => {
         history.push('/cadastro')
     }
 
     const Logar = () => {
-        axios.post('http://localhost:3000/login', {
-            email: email,
+        axios.post('http://localhost:8080/v1/user/login', {
+            userName: email,
             password: password
         })
         .then((response) => {
-            console.log(response)
+            localStorage.setItem('userId', response.data)
+            history.push('/home')
         }).catch((error) => {
             console.log(error.response)
         })
@@ -37,13 +43,13 @@ const Login = () => {
                                         <div className='bs-component'>
                                             <fieldset>
 
-                                                <FormGroup label="Email: *" htmlFor="exampleEmail">
+                                                <FormGroup label="Login: *" htmlFor="exampleEmail">
                                                     <input
                                                         style={{marginTop:"5px"}}
-                                                        type="email" 
+                                                        type="text" 
                                                         className="form-control" 
                                                         id="exampleEmail" 
-                                                        placeholder="Digite seu email:" 
+                                                        placeholder="Digite seu login:" 
                                                         value={email} 
                                                         onChange={e => setEmail(e.target.value)}
                                                     />

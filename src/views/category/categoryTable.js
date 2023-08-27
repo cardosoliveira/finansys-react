@@ -1,9 +1,7 @@
 import React from 'react'
 
 const ListarCategoria = (props) => {
-
-    console.log(props)
-
+    
     return (
 
         <table className='table table-hover'>
@@ -27,8 +25,8 @@ const ListarCategoria = (props) => {
                     <>
                         {props.categorias.map(categoria => (
                             <tr key={categoria.id}>
-                                <td style={{width:"20%"}}>{categoria.nome}</td>
-                                <td style={{width:"65%"}}>{categoria.descricao}</td>
+                                <td style={{width:"20%"}}>{categoria.name}</td>
+                                <td style={{width:"65%"}}>{categoria.description}</td>
                                 <td>
                                     <div style={{display: "flex", justifyContent: "space-between"}}>
                                         <button 
