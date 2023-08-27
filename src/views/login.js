@@ -5,6 +5,7 @@ import FormGroup from './components/form-group'
 import { useHistory} from 'react-router-dom';
 import axios from 'axios';
 import { useEffect } from 'react';
+import toastr from 'toastr'
 
 
 const Login = () => {
@@ -28,8 +29,9 @@ const Login = () => {
         .then((response) => {
             localStorage.setItem('userId', response.data)
             history.push('/home')
+            toastr.success('Usuário logado com sucesso!')
         }).catch((error) => {
-            console.log(error.response)
+            toastr.error('Usuário ou senha incorretos!')
         })
     }
 

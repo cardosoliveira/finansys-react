@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import Card from '../components/card'
+import Navbar from '../components/navbar';
 import ListarCategoria from './categoryTable';
 import CategoriaModal from './categoriaModal';
 import axios from 'axios';
@@ -31,6 +32,9 @@ const excluirCategoria = (id) => {
     const url = `http://localhost:8080/v1/category/${id}?userId=${userId}`;
     axios.delete(url)
     .then((response) => {
+        if (category.length === 1) {
+            setCategory([])
+        }
         ListCategoryFromApi()
         toastr.success('Categoria excluída com sucesso!')
     }).catch((error) => {
@@ -57,6 +61,8 @@ const editarCategoria = ( id ) => {
 
     return (
         <>
+            <Navbar />
+
             <div style={{ display: "flex" }}>
                   
                 <div>Quantidade de categorias: {category.length}</div>
