@@ -21,14 +21,16 @@ const CadastroUsuario = () => {
 
     const CadastrarUsuario = () => {
 
-            if (confirmPassword !== password) {
-                toastr.warning('As senhas não são iguais!')
+           
+
+            if (username === '') {
+                toastr.warning('Preencha o login!')
 
                 return;
             }
 
-            if (username === '') {
-                toastr.warning('Preencha o nome de usuário!')
+            if (fullname === '') {
+                toastr.warning('Preencha o nome!')
 
                 return;
             }
@@ -47,6 +49,12 @@ const CadastroUsuario = () => {
 
             if (confirmPassword === '') {
                 toastr.warning('Preencha a confirmação da senha!')
+
+                return;
+            }
+
+            if (confirmPassword !== password) {
+                toastr.warning('As senhas não são iguais!')
 
                 return;
             }
