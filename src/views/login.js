@@ -6,6 +6,8 @@ import { useHistory} from 'react-router-dom';
 import axios from 'axios';
 import { useEffect } from 'react';
 import toastr from 'toastr'
+import loginImage from '../5035121.jpg';
+import Navbar from './components/navbar';
 
 
 const Login = () => {
@@ -36,53 +38,63 @@ const Login = () => {
     }
 
         return (
-                <div className="row">
-                    <div className='col-md-6' style={{position : "relative", left: "300px"}}>
-                        <div className='bs-docs-section'>
-                            <Card title="Login">
-                                <div className='row'>
-                                    <div className='col-lg-12'>
-                                        <div className='bs-component'>
-                                            <fieldset>
+            <>
+            
+            <Navbar />
+               
+                <div style={{ display: 'flex', height: '80vh' }}>
+                    <div style={{ flex: 1, backgroundImage: `url(${loginImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+                        <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
+                            <div className='col-md-6' style={{position : "relative", left: "200px"}}>
+                                <div className='bs-docs-section'>
+                                    <Card title="Login">
+                                        <div className='row'>
+                                            <div className='col-lg-12'>
+                                                <div className='bs-component'>
+                                                    <fieldset>
 
-                                                <FormGroup label="Login: *" htmlFor="exampleEmail">
-                                                    <input
-                                                        style={{marginTop:"5px"}}
-                                                        type="text" 
-                                                        className="form-control" 
-                                                        id="exampleEmail" 
-                                                        placeholder="Digite seu login:" 
-                                                        value={email} 
-                                                        onChange={e => setEmail(e.target.value)}
-                                                    />
-                                                </FormGroup>
+                                                        <FormGroup label="Login: *" htmlFor="exampleEmail">
+                                                            <input
+                                                                style={{marginTop:"5px"}}
+                                                                type="text" 
+                                                                className="form-control" 
+                                                                id="exampleEmail" 
+                                                                placeholder="Digite seu login:" 
+                                                                value={email} 
+                                                                onChange={e => setEmail(e.target.value)}
+                                                            />
+                                                        </FormGroup>
 
-                                                <FormGroup label="Senha: *" htmlFor="examplePassword">
-                                                    <input
-                                                        style={{marginTop:"5px"}}
-                                                        type="password" 
-                                                        className="form-control" 
-                                                        id="examplePassword" 
-                                                        placeholder="Digite sua senha:" 
-                                                        value={password} 
-                                                        onChange={e => setPassword(e.target.value)}
-                                                    />
-                                                </FormGroup>   
+                                                        <FormGroup label="Senha: *" htmlFor="examplePassword">
+                                                            <input
+                                                                style={{marginTop:"5px"}}
+                                                                type="password" 
+                                                                className="form-control" 
+                                                                id="examplePassword" 
+                                                                placeholder="Digite sua senha:" 
+                                                                value={password} 
+                                                                onChange={e => setPassword(e.target.value)}
+                                                            />
+                                                        </FormGroup>   
 
-                                                <div style={{float: "right", marginTop: "20px"}}>
-                                                    <button onClick={Logar} className="btn btn-success">Entrar</button>
-                                                    <button onClick={handleCadastrar} style={{marginLeft: "10px"}} className='btn btn-danger'>Cadastrar</button>
+                                                        <div style={{float: "right", marginTop: "20px"}}>
+                                                            <button onClick={Logar} className="btn btn-success">Entrar</button>
+                                                            <button onClick={handleCadastrar} style={{marginLeft: "10px"}} className='btn btn-danger'>Cadastrar</button>
+                                                        </div>
+                                                        
+
+                                                    </fieldset>
                                                 </div>
-                                                
-
-                                            </fieldset>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </Card>
                                 </div>
-                            </Card>
+                            </div>
                         </div>
-                    </div>
                 </div>
+
+                </>
+                
         )
     }
 export default Login

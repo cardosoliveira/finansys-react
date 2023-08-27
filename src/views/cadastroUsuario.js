@@ -4,6 +4,7 @@ import FormGroup from "./components/form-group";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import toastr from "toastr";
+import Navbar from "./components/navbar";
 
 const CadastroUsuario = () => {
     const history = useHistory();
@@ -65,6 +66,8 @@ const CadastroUsuario = () => {
     }
     
     return (
+        <>
+        <Navbar />
             <Card title="Cadastro de Usuário">
                 <div className="row">
                     <div className="col-lg-12">
@@ -132,7 +135,8 @@ const CadastroUsuario = () => {
                         </div>
                     </div>
                 </div>
-            </Card>      
+            </Card>   
+        </>   
     )
 
 }
