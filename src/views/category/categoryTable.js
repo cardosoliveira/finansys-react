@@ -6,7 +6,7 @@ const ListarCategoria = (props) => {
 
         <table className='table table-hover'>
             <thead>
-                <tr>
+                <tr className='header table-primary'>
                     <th>Nome</th>
                     <th>Descrição</th>
                     <th>Ações</th>
