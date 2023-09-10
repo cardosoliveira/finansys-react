@@ -35,12 +35,13 @@ function Navbar (){
                     <ul className="navbar-nav">
                        
                         <NavbarItem render={haveUser} href="/home" label="Home" />
-                        {/* <NavbarItem href="/cadastro" label="Usuários" /> */}
-                        {/* <NavbarItem href="#/lançamento" label="Lançamentos" /> */}
+                        {/* <NavbarItem href="/cadastro" label="Usuários" /> */}          
                         {/* <NavbarItem href="/login" label="Login" /> */}
+                        <NavbarItem render={haveUser} href="/lancamento" label="Lançamentos" />
                         <NavbarItem render={haveUser} href="/categoria" label="Categorias" />
 
                         <NavbarItem render={haveUser} href="/" label="Sair" />
+                        
                         
                     </ul>
                 </div>

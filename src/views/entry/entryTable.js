@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ListCategory = (props) => {
+const ListEntry = (props) => {
     return (
         <table className='table table-hover'>
             <thead>
@@ -66,7 +66,7 @@ const ListCategory = (props) => {
                                     <p style={{ fontWeight: "bold", color: "green"}}>Pago</p>
                                 )}
                                 {entrys.paid != true && (
-                                    <p style={{ fontWeight: "bold", color: "yellow"}}>Pendente</p>
+                                    <p style={{ fontWeight: "bold", color: "orange"}}>Pendente</p>
                                 )}
                             </div>
 
@@ -98,4 +98,4 @@ const ListCategory = (props) => {
     )
 }
 
-export default ListCategory;
+export default ListEntry;

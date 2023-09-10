@@ -41,7 +41,7 @@ const CategoriaModal = ({ modalOpen, closeModal, categoryId }) => {
                 userId
             })
             .then((response) => {
-              handleCloaseModal()
+              handleCloseModal()
               toastr.success('Categoria cadastrada com sucesso!')
             }).catch((error) => {
                 console.log(error.response)
@@ -54,7 +54,7 @@ const CategoriaModal = ({ modalOpen, closeModal, categoryId }) => {
                 userId
             })
             .then((response) => {
-                handleCloaseModal()
+              handleCloseModal()
                 toastr.success('Categoria atualizada com sucesso!')
             }).catch((error) => {
                 console.log(error.response)
@@ -62,7 +62,7 @@ const CategoriaModal = ({ modalOpen, closeModal, categoryId }) => {
         }
     }
 
-    const handleCloaseModal = () => {
+    const handleCloseModal = () => {
         setCategoryDescription('')
         setCategoryName('')
         closeModal()
@@ -75,7 +75,7 @@ const CategoriaModal = ({ modalOpen, closeModal, categoryId }) => {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" style={{ color: '#333', fontWeight: 'bold' }}>Categoria</h5>
-            <button type="button" className="close" onClick={handleCloaseModal}>
+            <button type="button" className="close" onClick={handleCloseModal}>
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -88,7 +88,7 @@ const CategoriaModal = ({ modalOpen, closeModal, categoryId }) => {
                     type="text" 
                     className="form-control" 
                     id="recipient-name" 
-                    onChange={(e) => setCategoryName(e.target.value)} 
+                    onChange={(e) => setCategoryName(e.target.value)}
                     value={categoryName}
                 />
               </div>
@@ -108,7 +108,7 @@ const CategoriaModal = ({ modalOpen, closeModal, categoryId }) => {
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-primary" onClick={SaveCategory}>Salvar</button>
-            <button type="button" className="btn btn-secondary" onClick={handleCloaseModal}>Fechar</button>
+            <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>Fechar</button>
           </div>
         </div>
       </div>

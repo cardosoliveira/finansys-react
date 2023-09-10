@@ -16,7 +16,7 @@ function Rotas() {
                 <Route path="/home" component={Home} />              
                 <Route path="/cadastro" component={CadastroUsuario} />
                 <Route path="/categoria" component={Categoria} />
-                <Route path="/entry" component={Entry} />
+                <Route path="/lancamento" component={Entry} />
             </Switch>
         </Router>
     );
