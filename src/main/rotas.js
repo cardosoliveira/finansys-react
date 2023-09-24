@@ -6,6 +6,7 @@ import Login from "../views/login";
 import CadastroUsuario from "../views/cadastroUsuario";
 import Entry from "../views/entry/entry";
 import Home from "../views/home";
+import Reports from "../views/Report/Report";
 
 
 function Rotas() {
@@ -17,6 +18,7 @@ function Rotas() {
                 <Route path="/cadastro" component={CadastroUsuario} />
                 <Route path="/categoria" component={Categoria} />
                 <Route path="/lancamento" component={Entry} />
+                <Route path="/relatorios" component={Reports} />
             </Switch>
         </Router>
     );
