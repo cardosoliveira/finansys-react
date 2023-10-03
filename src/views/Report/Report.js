@@ -108,38 +108,64 @@ const Reports = () => {
 
   return (
     <>
-    <Navbar />
-        <div>
-        <div>
-            <label>Mês:</label>
-            <select value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}>
-            <option value="">Selecione o mês</option>
-            <option value="1">Janeiro</option>
-            <option value="2">Fevereiro</option>
-            <option value="3">Março</option>
-            <option value="4">Abril</option>
-            <option value="5">Maio</option>
-            <option value="6">Junho</option>
-            <option value="7">Julho</option>
-            <option value="8">Agosto</option>
-            <option value="9">Setembro</option>
-            <option value="10">Outubro</option>
-            <option value="11">Novembro</option>
-            <option value="12">Dezembro</option>
-            </select>
+      <Navbar />
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-6">
+            <div className="form-group">
+              <label htmlFor="mes">Mês:</label>
+              <select
+                id="mes"
+                className="form-control"
+                value={selectedMonth}
+                onChange={(e) => setSelectedMonth(e.target.value)}
+              >
+                <option value="">Selecione o mês</option>
+                <option value="1">Janeiro</option>
+                <option value="2">Fevereiro</option>
+                <option value="3">Março</option>
+                <option value="4">Abril</option>
+                <option value="5">Maio</option>
+                <option value="6">Junho</option>
+                <option value="7">Julho</option>
+                <option value="8">Agosto</option>
+                <option value="9">Setembro</option>
+                <option value="10">Outubro</option>
+                <option value="11">Novembro</option>
+                <option value="12">Dezembro</option>
+              </select>
+            </div>
+          </div>
+          <div className="col-6">
+            <div className="form-group">
+              <label htmlFor="ano">Ano:</label>
+              <select
+                id="ano"
+                className="form-control"
+                value={selectedYear}
+                onChange={(e) => setSelectedYear(e.target.value)}
+              >
+                <option value="">Selecione o ano</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                {/* Adicione mais anos conforme necessário */}
+              </select>
+            </div>
+          </div>
         </div>
-        <div>
-            <label>Ano:</label>
-            <select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
-            <option value="">Selecione o ano</option>
-            <option value="2023">2023</option>
-            <option value="2022">2022</option>
-            {/* Adicione mais anos conforme necessário */}
-            </select>
+        <div className="row justify-content-center" style={{ marginTop: '20px' }}>
+          <div className="col-6 text-center">
+            <button className="btn btn-primary" onClick={handleFetchData}>
+              Gerar Relatório
+            </button>
+          </div>
         </div>
-        <button onClick={handleFetchData}>Buscar Dados</button>
-        <canvas id="myChart"></canvas>
+        <div className="row justify-content-center">
+          <div className="col-10">
+            <canvas id="myChart"></canvas>
+          </div>
         </div>
+      </div>
     </>
   );
 };
