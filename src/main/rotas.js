@@ -7,6 +7,7 @@ import CadastroUsuario from "../views/cadastroUsuario";
 import Entry from "../views/entry/entry";
 import Home from "../views/home";
 import Reports from "../views/Report/Report";
+import UserEdit from "../views/userEdit";
 
 
 function Rotas() {
@@ -19,6 +20,7 @@ function Rotas() {
                 <Route path="/categoria" component={Categoria} />
                 <Route path="/lancamento" component={Entry} />
                 <Route path="/relatorios" component={Reports} />
+                <Route path="/usuario" component={UserEdit} />
             </Switch>
         </Router>
     );

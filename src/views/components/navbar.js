@@ -40,7 +40,7 @@ function Navbar (){
                         {/* <NavbarItem href="/login" label="Login" /> */}
                         <NavbarItem render={haveUser} href="/lancamento" label="Lançamentos" />
                         <NavbarItem render={haveUser} href="/categoria" label="Categorias" />
-
+                        <NavbarItem render={haveUser} href="/usuario" label="Perfil" />
                         <NavbarItem render={haveUser} href="/" label="Sair" />
                         
                         
