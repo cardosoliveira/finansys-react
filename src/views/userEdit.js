@@ -9,8 +9,8 @@ import Navbar from "./components/navbar";
 const UserEdit = () => {
     const userId = localStorage.getItem('userId');
     const history = useHistory();
-    const [fullname, setFullname] = useState('')
-    const [username, setUsername] = useState('')
+    const [fullName, setFullname] = useState('')
+    const [userName, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
@@ -46,13 +46,13 @@ const UserEdit = () => {
     const handleSalvarUsuario = async () => {
         try {
 
-            if (username === '') {
+            if (userName === '') {
                 toastr.warning('Preencha o login!')
 
                 return;
             }
 
-            if (fullname === '') {
+            if (fullName === '') {
                 toastr.warning('Preencha o nome!')
 
                 return;
@@ -84,8 +84,8 @@ const UserEdit = () => {
 
             if (userId) {
                 const userData = {
-                    fullname,
-                    username,
+                    fullName,
+                    userName,
                     email,
                     password,
                 };
@@ -94,7 +94,7 @@ const UserEdit = () => {
 
                 toastr.success("Dados do usuário atualizados com sucesso");
 
-                history.push('/');
+                history.push('/home');
             } else {
                 toastr.error("Código do usuário não encontrado no LocalStorage");
             }
@@ -118,7 +118,7 @@ const UserEdit = () => {
                                     id="inputName" 
                                     placeholder="Digite seu nome:" 
                                     name="nome"
-                                    value={fullname}
+                                    value={fullName}
                                     onChange={e => setFullname(e.target.value)}
                                 />
                             </FormGroup>
@@ -140,7 +140,7 @@ const UserEdit = () => {
                                     className="form-control" 
                                     id="inputUsername" 
                                     placeholder="Digite seu login:" 
-                                    value={username}
+                                    value={userName}
                                     onChange={e => setUsername(e.target.value)}
                                 />
                             </FormGroup>
